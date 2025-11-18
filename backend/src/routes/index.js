@@ -3,6 +3,8 @@ import authRoutes from './authRoutes.js';
 import courseRoutes from './courseRoutes.js';
 import videoRoutes from './videoRoutes.js';
 import noteRoutes from './noteRoutes.js';
+import flashcardRoutes from './flashcardRoutes.js';
+import aiRoutes from './aiRoutes.js';
 
 /**
  * Main router
@@ -20,6 +22,7 @@ router.get('/health', (req, res) => {
     status: 'ok',
     timestamp: new Date().toISOString(),
     uptime: process.uptime(),
+    environment: process.env.NODE_ENV,
   });
 });
 
@@ -28,9 +31,7 @@ router.use(`${API_VERSION}/auth`, authRoutes);
 router.use(`${API_VERSION}/courses`, courseRoutes);
 router.use(`${API_VERSION}/videos`, videoRoutes);
 router.use(`${API_VERSION}/notes`, noteRoutes);
-
-// Future routes:
-// router.use(`${API_VERSION}/flashcards`, flashcardRoutes);
-// router.use(`${API_VERSION}/reviews`, reviewRoutes);
+router.use(`${API_VERSION}/flashcards`, flashcardRoutes);
+router.use(`${API_VERSION}/ai`, aiRoutes);
 
 export default router;
