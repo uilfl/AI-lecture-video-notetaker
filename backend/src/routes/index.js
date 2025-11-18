@@ -1,5 +1,8 @@
 import express from 'express';
 import authRoutes from './authRoutes.js';
+import courseRoutes from './courseRoutes.js';
+import videoRoutes from './videoRoutes.js';
+import noteRoutes from './noteRoutes.js';
 
 /**
  * Main router
@@ -22,11 +25,11 @@ router.get('/health', (req, res) => {
 
 // Mount routes
 router.use(`${API_VERSION}/auth`, authRoutes);
+router.use(`${API_VERSION}/courses`, courseRoutes);
+router.use(`${API_VERSION}/videos`, videoRoutes);
+router.use(`${API_VERSION}/notes`, noteRoutes);
 
-// Future routes will be added here:
-// router.use(`${API_VERSION}/courses`, courseRoutes);
-// router.use(`${API_VERSION}/videos`, videoRoutes);
-// router.use(`${API_VERSION}/notes`, noteRoutes);
+// Future routes:
 // router.use(`${API_VERSION}/flashcards`, flashcardRoutes);
 // router.use(`${API_VERSION}/reviews`, reviewRoutes);
 
